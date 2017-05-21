@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:UniSyncClient.ViewModel"
+             x:Class="UniSyncClient.View.DirectorySelectPage">
+  
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <viewModel:DirectorySelectViewModel x:Key="Model" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  
+    <ContentPage.BindingContext>
+      <x:StaticResource Key="Model" />
+    </ContentPage.BindingContext>
+  
+    
+  
+    <StackLayout>
+      <Label Text="{Binding Folder.Path}" HorizontalOptions="Center"></Label>
+      <ListView ItemsSource="{Binding Folders.Result}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <TextCell Text="{Binding Name}" Command="{Binding Source={x:StaticResource Model}, Path=SelectFolderCommand}" CommandParameter="{Binding}"></TextCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </StackLayout>
+
+</ContentPage>

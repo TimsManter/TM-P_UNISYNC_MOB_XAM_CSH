@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UniSyncService.DataContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UniSyncService.DataContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfFileInfoDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FileInfoDataContract" nillable="true" type="tns:FileInfoDataContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFileInfoDataContract" nillable="true" type="tns:ArrayOfFileInfoDataContract" />
+  <xs:complexType name="FileInfoDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Action" type="tns:FileAction" />
+      <xs:element minOccurs="0" name="ModifyDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FileInfoDataContract" nillable="true" type="tns:FileInfoDataContract" />
+  <xs:simpleType name="FileAction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="SendToClient" />
+      <xs:enumeration value="SendToServer" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FileAction" nillable="true" type="tns:FileAction" />
+</xs:schema>

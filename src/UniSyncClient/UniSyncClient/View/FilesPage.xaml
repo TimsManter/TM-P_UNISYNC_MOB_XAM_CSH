@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:UniSyncClient.ViewModel;assembly=UniSyncClient"
+             xmlns:local="clr-namespace:UniSyncClient;assembly=UniSyncClient"
+             x:Class="UniSyncClient.View.FilesPage">
+  
+  <ContentPage.BindingContext>
+    <viewModel:FilesViewModel />
+  </ContentPage.BindingContext>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Odśwież" Command="{Binding UpdateFileListCommand}" Icon="Assets/appbar.refresh.png" />
+    <ToolbarItem Text="Wyślij" Command="{Binding SendFilesCommand}"/>
+  </ContentPage.ToolbarItems>
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style TargetType="Button">
+        <Style.Triggers>
+          <Trigger TargetType="Button" Property="IsEnabled" Value="False" >
+            <Setter Property="BackgroundColor" Value="Gray"></Setter>
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+      <Style TargetType="Button" x:Key="HideWhenDisabled">
+        <Style.Triggers>
+          <Trigger TargetType="Button" Property="IsEnabled" Value="False" >
+            <Setter Property="IsVisible" Value="False"></Setter>
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+      <Style TargetType="Label" x:Key="HideWhenEmpty">
+        <Style.Triggers>
+          <Trigger TargetType="Label" Property="Text" Value="{x:Null}">
+            <Setter Property="IsVisible" Value="False"></Setter>
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  
+  <StackLayout>
+    <ListView ItemsSource="{Binding Source={x:Static local:App.Storage}, Path=SynchronizationFiles}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell Text="{Binding Name}"></TextCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <StackLayout Orientation="Horizontal">
+      <Button Text="Wybierz folder" BackgroundColor="Teal" HorizontalOptions="FillAndExpand" Command="{Binding SelectFolder}" Style="{StaticResource HideWhenDisabled}"></Button>
+      <Button Text="Przywróć domyślny" BackgroundColor="Teal" HorizontalOptions="FillAndExpand" Command="{Binding ResetFolder}" Style="{StaticResource HideWhenDisabled}"></Button>
+    </StackLayout>
+    <Label Text="{Binding Source={x:Static local:App.Storage}, Path=Path}" Style="{StaticResource HideWhenEmpty}"></Label>
+  </StackLayout>
+
+</ContentPage>

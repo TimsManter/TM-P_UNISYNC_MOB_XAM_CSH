@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UniSyncService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.IO" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/UniSyncService.DataContract" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUniSyncService_Initialize_InputMessage">
+    <wsdl:part name="parameters" element="tns:Initialize" />
+  </wsdl:message>
+  <wsdl:message name="IUniSyncService_Initialize_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InitializeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUniSyncService_ReceiveFileStreamFromServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveFileStreamFromServer" />
+  </wsdl:message>
+  <wsdl:message name="IUniSyncService_ReceiveFileStreamFromServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveFileStreamFromServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUniSyncService_SendFileStreamToServer_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFileStreamToServer" />
+  </wsdl:message>
+  <wsdl:message name="IUniSyncService_SendFileStreamToServer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendFileStreamToServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUniSyncService_FileListToSend_InputMessage">
+    <wsdl:part name="parameters" element="tns:FileListToSend" />
+  </wsdl:message>
+  <wsdl:message name="IUniSyncService_FileListToSend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FileListToSendResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUniSyncService">
+    <wsdl:operation name="Initialize">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniSyncService/Initialize" message="tns:IUniSyncService_Initialize_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniSyncService/InitializeResponse" message="tns:IUniSyncService_Initialize_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveFileStreamFromServer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniSyncService/ReceiveFileStreamFromServer" message="tns:IUniSyncService_ReceiveFileStreamFromServer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniSyncService/ReceiveFileStreamFromServerResponse" message="tns:IUniSyncService_ReceiveFileStreamFromServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFileStreamToServer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniSyncService/SendFileStreamToServer" message="tns:IUniSyncService_SendFileStreamToServer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniSyncService/SendFileStreamToServerResponse" message="tns:IUniSyncService_SendFileStreamToServer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FileListToSend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniSyncService/FileListToSend" message="tns:IUniSyncService_FileListToSend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniSyncService/FileListToSendResponse" message="tns:IUniSyncService_FileListToSend_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IUniSyncService" type="tns:IUniSyncService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Initialize">
+      <soap:operation soapAction="http://tempuri.org/IUniSyncService/Initialize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveFileStreamFromServer">
+      <soap:operation soapAction="http://tempuri.org/IUniSyncService/ReceiveFileStreamFromServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFileStreamToServer">
+      <soap:operation soapAction="http://tempuri.org/IUniSyncService/SendFileStreamToServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FileListToSend">
+      <soap:operation soapAction="http://tempuri.org/IUniSyncService/FileListToSend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UniSyncService">
+    <wsdl:port name="BasicHttpBinding_IUniSyncService" binding="tns:BasicHttpBinding_IUniSyncService">
+      <soap:address location="http://localhost/unisync" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

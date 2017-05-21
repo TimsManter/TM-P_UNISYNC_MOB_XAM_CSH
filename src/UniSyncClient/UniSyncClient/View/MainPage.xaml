@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:UniSyncClient"
+             xmlns:viewModel="clr-namespace:UniSyncClient.ViewModel;assembly=UniSyncClient"
+             xmlns:converter="clr-namespace:UniSyncClient.ViewModel.Converter;assembly=UniSyncClient"
+             x:Class="UniSyncClient.View.MainPage"
+             BackgroundColor="#999999">
+  
+  <ContentPage.BindingContext>
+    <viewModel:MainViewModel />
+  </ContentPage.BindingContext>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem></ToolbarItem>
+  </ContentPage.ToolbarItems>
+  
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converter:CommunicationStateConverter x:Key="CommunicationStateConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <StackLayout Margin="10">
+    <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+      <Button Text="Rozłącz" BackgroundColor="Red" TextColor="Black" Command="{Binding Disconnect}" />
+      <Button Text="Połącz" BackgroundColor="Green" TextColor="Black" HorizontalOptions="FillAndExpand" Command="{Binding Connect}" />
+    </StackLayout>
+    <Label HorizontalOptions="Center" Text="{Binding Source={x:Static local:App.Connection}, Path=State, Converter={StaticResource CommunicationStateConverter}}" />
+  </StackLayout>
+
+</ContentPage>
