@@ -7,7 +7,7 @@
 * @Language: C#
 * @Framework: Xamarin
 * @Locale: pl_PL
-* @DocumentationPL: [DOCX](docs/UniSyncProject_Documentation_PL.docx)
+* @Documentation: [Polish](docs/UniSyncProject_Documentation_PL.docx)
 * @License: [GPLv3](LICENSE.md)
 * @Status: Dev | Sample
 
